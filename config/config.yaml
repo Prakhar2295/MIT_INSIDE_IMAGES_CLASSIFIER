@@ -80,7 +80,7 @@ source_download_dirs:
    - ../MIT_Images/warehouse
    - ../MIT_Images/winecellar
 
-local_data_dir:
+local_data_dirs:
    -  data/airport_inside
    -  data/artstudio
    -  data/auditorium
