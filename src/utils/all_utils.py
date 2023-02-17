@@ -14,5 +14,10 @@ def create_directory(dirs: list):
     for dir_path in dirs:
         os.makedirs(dir_path,exist_ok = True)
         logging.info(f"directory is created at {dir_path}")
-    return    
+    return
 
+def get_timestamp(name):
+    timestamp= time.asctime().replace(" ","_").replace(":","_")
+    unique_name = f"{name}_at_{timestamp}"
+    return unique_name
+       
