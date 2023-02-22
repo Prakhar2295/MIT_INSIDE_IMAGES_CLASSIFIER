@@ -24,6 +24,16 @@ setup(
        "tensorflow==2.5",
        "tqdm==4.62.3",
        "joblib==1.1.0",
-       "scipy==1.7.1"
+       "scipy==1.7.1",
+       "scikit-learn==1.0",
+       "Flask==1.1.1",
+       "gevent==1.4.0",
+       "h5py==3.1.0",
+       "numpy==1.19.5",
+       "Pillow==8.3.2",
+       "Werkzeug==2.0.1",
+       "itsdangerous==1.1.0",
+       "Jinja2==2.11.1"
+
     ]
 )
