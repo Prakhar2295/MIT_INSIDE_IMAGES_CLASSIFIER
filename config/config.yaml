@@ -9,10 +9,7 @@ artifacts:
   TENSORBOARD_ROOT_LOG_DIR: tensorboard_log_dir
   CALLBACKS_DIR: callbacks
   DATA_DIR: data
-  TRAINED_MODEL_FILENAME: 
-  reports_dir: 
-  scores: 
-  
+  TRAINED_MODEL_FILENAME: model_at_Sun_Feb_19_21_19_18_2023_.h5
 
 source_download_dirs:
    - ../MIT_Images/airport_inside
