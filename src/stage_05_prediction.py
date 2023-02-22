@@ -8,7 +8,7 @@ from src.utils.data_management import train_valid_generator
 from src.utils.all_utils import create_directory, read_yaml
 from tensorflow.keras.models import load_model
 import numpy as np
-from keras.preprocessing import image
+from tensorflow.keras.preprocessing import image
 import pandas as pd
 import json
 
@@ -41,46 +41,28 @@ def evaluate_model(config_path,params_path):
 
     model =load_model(trained_model_file_path)
 
-    train_generator,valid_generator = train_valid_generator(
-        data_dir= artifacts["DATA_DIR"],
-        IMAGE_SIZE=tuple(params["IMAGE_SIZE"][:-1]),
-        BATCH_SIZE=params["BATCH_SIZE"],
-        do_data_augmentation=params["AUGMENTATION"]
-    )
-
-    test_image = image.load_img('data/airport_inside/airport_inside_0001.jpg', target_size = (224,224))
+def predict_label(img_path,model):
+    
+    img_path = "data/airport_inside/airport_inside_0001.jpg"
+    model = load_model("artifacts/model/model_at_Sun_Feb_19_21_19_18_2023_.h5")
+    test_image = image.load_img(img_path, target_size = (224,224))
     test_image = image.img_to_array(test_image)
     test_image = np.expand_dims(test_image, axis = 0)
     result = model.predict(test_image)
-    train_generator.class_indices
     if  result[0][0] ==1:
         prediction = "airport_inside"
-        print(prediction)
+        return[{"image": prediction }]
     elif result[0][1] == 1:
         prediction = "artstudio"
-        print(prediction)
+        return[{"image": prediction }]
             
     elif result[0][2] == 1:
         prediction = "auditorium"
-        print(prediction)
+        return[{"image": prediction }]
     else:
-         print('Negative number')
-       
-
-    
-
-
-
-    
-               
-    
-    
-
-        
-
-
-   
-    
+        return[{"image": "life is easy"}]
+s = predict_label(img_path = "data/airport_inside/airport_inside_0001.jpg",model = load_model("artifacts/model/model_at_Sun_Feb_19_21_19_18_2023_.h5"))
+print(s)
 
 if __name__ == "__main__":
     args = argparse.ArgumentParser()
